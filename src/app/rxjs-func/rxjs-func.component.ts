@@ -29,7 +29,8 @@ export class RxjsFuncComponent implements OnInit {
               };
             }),
             takeUntil(mouseup$));
-        }));
+        })
+    );
 
     // const position$ = drag$.pipe(subscribeOn(animationFrameScheduler));
 
@@ -37,7 +38,14 @@ export class RxjsFuncComponent implements OnInit {
     drag$.subscribe(pos => {
       box.style.top = `${pos.top}px`;
       box.style.left = `${pos.left}px`;
-    });
-  }
+      const elemBelow = document.elementFromPoint(pos.top, pos.left);
+      const droppable1 = elemBelow.closest('.droppable');
+      console.log('droppable', droppable1,  elemBelow);
 
+    });
+
+  }
+  dropZone( pos) {
+
+  }
 }
