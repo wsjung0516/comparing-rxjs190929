@@ -1,0 +1,17 @@
+.draggable {
+  position:absolute;
+  background-color: white;
+  background-image: url("https://en.js.cx/clipart/ball.svg");
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+.droppable {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  height: 43px;
+  width: 86px;
+
+}

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "comparing-rxjs"
+    }
+  },
+  "defaultProject": "comparing-rxjs",
+  "cli": {
+    "defaultCollection": "@ngneat/spectator"
+  }
 }

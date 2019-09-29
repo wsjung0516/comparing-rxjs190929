@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {VanillaFuncComponent} from './vanilla-func/vanilla-func.component';
+import {RxjsFuncComponent} from './rxjs-func/rxjs-func.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: RxjsFuncComponent , pathMatch: 'full'},
+  { path: 'rxjs', component: RxjsFuncComponent},
+  { path: 'vanilla', component: VanillaFuncComponent}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
