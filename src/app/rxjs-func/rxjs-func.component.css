@@ -9,9 +9,12 @@
 }
 .droppable {
   position: absolute;
+  background-image: url("https://en.js.cx/clipart/soccer-gate.svg");
+  background-size: cover;
   top: 100px;
-  left: 0px;
-  height: 43px;
-  width: 86px;
+  left: 100px;
+  height: 46px;
+  width: 83px;
+  cursor: pointer;
 
 }
