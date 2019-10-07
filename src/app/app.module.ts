@@ -7,6 +7,8 @@ import { VanillaFuncComponent } from './vanilla-func/vanilla-func.component';
 import { RxjsFuncComponent } from './rxjs-func/rxjs-func.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { PaintComponent } from './paint/paint.component';
+import { ErrorHandlerComponent } from './error-handler/error-handler.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { PaintComponent } from './paint/paint.component';
     VanillaFuncComponent,
     RxjsFuncComponent,
     CanvasComponent,
-    PaintComponent
+    PaintComponent,
+    ErrorHandlerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
