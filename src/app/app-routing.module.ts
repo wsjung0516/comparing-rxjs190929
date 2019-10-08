@@ -4,15 +4,15 @@ import {VanillaFuncComponent} from './vanilla-func/vanilla-func.component';
 import {RxjsFuncComponent} from './rxjs-func/rxjs-func.component';
 import {CanvasComponent} from './canvas/canvas.component';
 import {PaintComponent} from './paint/paint.component';
-import {ErrorHandlerComponent} from './error-handler/error-handler.component';
+import {CommTestComponent} from './comm-test/comm-test.component';
 
 
 const routes: Routes = [
-  { path: '', component: ErrorHandlerComponent, pathMatch: 'full'},
+  { path: '', component: CommTestComponent, pathMatch: 'full'},
   { path: 'rxjs', component: RxjsFuncComponent},
   { path: 'vanilla', component: VanillaFuncComponent},
   { path: 'canvas', component: PaintComponent},
-  { path: 'errors', component: ErrorHandlerComponent}
+  { path: 'errors', component: CommTestComponent}
   ];
 
 @NgModule({

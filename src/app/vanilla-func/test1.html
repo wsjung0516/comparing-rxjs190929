@@ -48,7 +48,7 @@
             if (!elemBelow) return;
 
             let droppableBelow = elemBelow.closest('.droppable');
-            if (currentDroppable != droppableBelow) {
+            if (currentDroppable !== droppableBelow) {
                 if (currentDroppable) { // null when we were not over a droppable before this event
                     leaveDroppable(currentDroppable);
                 }

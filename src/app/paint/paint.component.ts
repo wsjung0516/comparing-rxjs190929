@@ -1,30 +1,46 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {fromEvent} from 'rxjs';
+import {fromEvent, Observable} from 'rxjs';
 import {mergeMap, takeUntil} from 'rxjs/operators';
 import {CanvasComponent} from '../canvas/canvas.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-paint',
   template: `
-    <p>
-        <app-canvas></app-canvas>
-    </p>
+    <button type="button" (click)="goHome()"> Home </button>
+    <button type="button" (click)="onDraw()"> Draw </button>
+    <div style="position: relative; width: 500px; height: 500px; border: 1px dashed skyblue">
+        <div style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px">
+              <app-canvas></app-canvas>
+        </div>
+    </div>
   `,
   styles: []
 })
 export class PaintComponent implements OnInit {
   @ViewChild(CanvasComponent, {static: false }) CanvasCmp: CanvasComponent;
-  constructor() { }
-
+  constructor( private router: Router) { }
+  move$: Observable<any>;
+  down$: Observable<any>;
+  up$: Observable<any>;
   ngOnInit() {
-    const move$ = fromEvent(document, 'mousemove');
-    const down$ = fromEvent(document, 'mousedown');
-    const up$ = fromEvent(document, 'mouseup');
+    this.move$ = fromEvent(document, 'mousemove');
+    this.down$ = fromEvent(document, 'mousedown');
+    this.up$ = fromEvent(document, 'mouseup');
 
-    const paints$ = down$.pipe(
-      mergeMap(down => move$.pipe(takeUntil(up$)))
+
+  }
+  goHome() {
+    this.router.navigate(['/']);
+  }
+  onDraw() {
+    const paints$ = this.down$.pipe(
+      mergeMap(down => this.move$.pipe(takeUntil(this.up$)))
     );
-    paints$.subscribe((r: MouseEvent) => this.CanvasCmp.paint(r));
+    paints$.subscribe((r: MouseEvent) => {
+      // console.log('r-->', r )
+      this.CanvasCmp.paint(r);
+    });
 
   }
 

@@ -7,8 +7,8 @@ import { VanillaFuncComponent } from './vanilla-func/vanilla-func.component';
 import { RxjsFuncComponent } from './rxjs-func/rxjs-func.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { PaintComponent } from './paint/paint.component';
-import { ErrorHandlerComponent } from './error-handler/error-handler.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CommTestComponent } from './comm-test/comm-test.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
     RxjsFuncComponent,
     CanvasComponent,
     PaintComponent,
-    ErrorHandlerComponent
+    CommTestComponent
   ],
   imports: [
     BrowserModule,

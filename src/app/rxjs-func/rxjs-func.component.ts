@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {animationFrameScheduler, fromEvent, Observable} from 'rxjs';
-import {map, subscribeOn, switchMap, takeUntil} from 'rxjs/operators';
+import {animationFrameScheduler, forkJoin, fromEvent, Observable, of, zip} from 'rxjs';
+import {map, subscribeOn, switchMap, take, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs-func',
@@ -10,13 +10,14 @@ import {map, subscribeOn, switchMap, takeUntil} from 'rxjs/operators';
 export class RxjsFuncComponent implements OnInit {
   mousemove$: Observable<any>;
   event: Event;
+  currentDroppable = null;
+
   constructor() {
     this.mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
   }
 
   ngOnInit() {
     const box = document.querySelector<HTMLDivElement>('.draggable');
-
     const mousedown$ = fromEvent<MouseEvent>(box, 'mousedown');
     const mouseup$ = fromEvent<MouseEvent>(box, 'mouseup');
 
@@ -33,20 +34,34 @@ export class RxjsFuncComponent implements OnInit {
             takeUntil(mouseup$));
         })
     );
-
-    // const position$ = drag$.pipe(subscribeOn(animationFrameScheduler));
-
-    // position$.subscribe(pos => {
     drag$.subscribe(pos => {
+      this.checkIsDropArea( pos);
       box.style.top = `${pos.top}px`;
       box.style.left = `${pos.left}px`;
     });
+  }
+  checkIsDropArea( pos ) {
+    // const val = {...pos};
+    const y = Number(pos.top);
+    const x = Number(pos.left);
+    const elemBelow = document.elementFromPoint( x, y);
+    const droppableBelow = elemBelow.closest('.droppable');
+    if (this.currentDroppable !== droppableBelow) {
+      if (this.currentDroppable) { // null when we were not over a droppable before this event
+        this.leaveDroppable(this.currentDroppable);
+      }
+      this.currentDroppable = droppableBelow;
+      if (this.currentDroppable) { // null if we're not coming over a droppable now
+        // (maybe just left the droppable)
+        this.enterDroppable(this.currentDroppable);
+      }
+    }
+  }
+  enterDroppable(elem) {
+    elem.style.backgroundColor = 'pink';
+  }
 
-  }
-  onDrop(ev) {
-    console.log('onDrop', ev);
-  }
-  allowDrop(ev) {
-    console.log('allowDrop', ev);
+  leaveDroppable(elem) {
+    elem.style.background = '';
   }
 }
