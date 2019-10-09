@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 
+import { ErrorsComponent } from '../errors-component/errors.component';
 
+const routes: Routes = [
+  { path: 'error', component: ErrorsComponent },
+  { path: '**', component: ErrorsComponent, data: { error: 404 } },
+]
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class ErrorsRoutingModule { }

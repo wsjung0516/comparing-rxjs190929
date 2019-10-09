@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'rxjs', component: RxjsFuncComponent},
   { path: 'vanilla', component: VanillaFuncComponent},
   { path: 'canvas', component: PaintComponent},
-  { path: 'errors', component: CommTestComponent}
+  { path: 'comm-test', component: CommTestComponent}
   ];
 
 @NgModule({

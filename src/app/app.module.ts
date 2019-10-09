@@ -9,6 +9,9 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { PaintComponent } from './paint/paint.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CommTestComponent } from './comm-test/comm-test.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
+import {ErrorsModule} from './errors/errors.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { CommTestComponent } from './comm-test/comm-test.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    ErrorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
