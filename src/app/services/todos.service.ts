@@ -11,9 +11,6 @@ export class TodosService {
               private toastr: ToastrService ) { }
 
   getData() {
-   return this.http.get('https://jsonplaceholder.typicode.com/todoss/1')
-      .pipe(
-        retryWithBackoffToast(1000, this.toastr )
-      );
+   return this.http.get('https://jsonplaceholder.typicode.com/todoss/1');
   }
 }

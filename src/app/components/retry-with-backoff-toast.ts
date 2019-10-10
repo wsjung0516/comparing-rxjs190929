@@ -15,6 +15,7 @@ export function retryWithBackoffToast( delayMs: number, toast: ToastrService, ma
   return ( src: Observable<any>) =>
     src.pipe(
       retryWhen((errors: Observable<any>) => errors.pipe (
+        tap( val => console.log('retryWhen is called')),
         mergeMap( error => {
           toast.error('Network is unstable', 'Connection Error', {timeOut: 2000})
           if( error.status === 404 ) {

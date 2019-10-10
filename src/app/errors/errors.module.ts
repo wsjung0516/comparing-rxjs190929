@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ErrorsComponent } from './errors-component/errors.component';
-import {ErrorsHandler} from './errors-handler';
+// import {ErrorsHandler} from './errors-handler';
 import {ErrorsRoutingModule} from './errors-routing/errors-routing.module';
+// import {HTTP_INTERCEPTORS} from '@angular/common/http';
+// import {ServerErrorsInterceptor} from './errors-interceptor/server-errors.interceptor';
 
 @NgModule({
   imports: [
@@ -16,10 +18,6 @@ import {ErrorsRoutingModule} from './errors-routing/errors-routing.module';
     ErrorsComponent
   ],
   providers: [
-    {
-      provide: ErrorHandler,
-      useClass: ErrorsHandler,
-    },
   ]
 })
 export class ErrorsModule { }
