@@ -45,7 +45,7 @@ export class RxjsFuncComponent implements OnInit {
     const y = Number(pos.top);
     const x = Number(pos.left);
     const elemBelow = document.elementFromPoint( x, y);
-    const droppableBelow = elemBelow.closest('.droppable');
+    const droppableBelow = !!elemBelow && elemBelow.closest('.droppable');
     if (this.currentDroppable !== droppableBelow) {
       if (this.currentDroppable) { // null when we were not over a droppable before this event
         this.leaveDroppable(this.currentDroppable);
