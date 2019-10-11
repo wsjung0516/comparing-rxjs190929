@@ -20,7 +20,7 @@ export class NotificationService {
 
   notify(message) {
     this._notification.next(message);
-    setTimeout(() => this._notification.next(null), 3000);
+    //  setTimeout(() => this._notification.next(null), 3000);
   }
 
 }

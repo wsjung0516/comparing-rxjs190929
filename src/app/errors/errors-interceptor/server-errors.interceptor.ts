@@ -40,11 +40,11 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
         retryWhen((errors: Observable<any>) => errors.pipe (
           tap( val => console.log('retry connection', val)),
           mergeMap( error => {
-            this.toastr.error('Network is unstable', 'Connection Error', {timeOut: 2000})
             if( error.status === 404 ) {
-              // console.log('the page is not found-->', error, error.status);
+              console.log('the page is not found-->', error, error.status);
               return throwError( error );
             }
+            this.toastr.error('Network is unstable', 'Connection Error', {timeOut: 2000})
             if ( retries-- > 0) {
               const backoffTime = delayMs + (maxRetry - retries) * backoffMs;
               return of(error).pipe( delay(backoffTime));
