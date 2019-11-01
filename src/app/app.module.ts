@@ -14,6 +14,8 @@ import {ToastrModule} from 'ngx-toastr';
 import {ErrorsModule} from './errors/errors.module';
 import {ErrorsHandler} from './errors/errors-handler';
 import {ServerErrorsInterceptor} from './errors/errors-interceptor/server-errors.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {ServerErrorsInterceptor} from './errors/errors-interceptor/server-errors
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ErrorsModule
+    ErrorsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
