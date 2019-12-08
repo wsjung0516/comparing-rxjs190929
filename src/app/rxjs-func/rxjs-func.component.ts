@@ -13,11 +13,11 @@ export class RxjsFuncComponent implements OnInit {
   currentDroppable = null;
 
   constructor() {
-    this.mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
   }
 
   ngOnInit() {
     const box = document.querySelector<HTMLDivElement>('.draggable');
+    this.mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
     const mousedown$ = fromEvent<MouseEvent>(box, 'mousedown');
     const mouseup$ = fromEvent<MouseEvent>(box, 'mouseup');
 
@@ -42,6 +42,7 @@ export class RxjsFuncComponent implements OnInit {
   }
   checkIsDropArea( pos ) {
     // const val = {...pos};
+    console.log('x,y-->', pos);
     const y = Number(pos.top);
     const x = Number(pos.left);
     const elemBelow = document.elementFromPoint( x, y);
@@ -49,6 +50,8 @@ export class RxjsFuncComponent implements OnInit {
     if (this.currentDroppable !== droppableBelow) {
       if (this.currentDroppable) { // null when we were not over a droppable before this event
         this.leaveDroppable(this.currentDroppable);
+        this.currentDroppable = droppableBelow;
+        return;
       }
       this.currentDroppable = droppableBelow;
       if (this.currentDroppable) { // null if we're not coming over a droppable now

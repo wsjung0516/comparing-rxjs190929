@@ -2,8 +2,9 @@
   position:absolute;
   background-image: url("https://en.js.cx/clipart/ball.svg");
   background-size: cover;
-  height: 40px;
-  width: 40px;
+  background-color: antiquewhite;
+  height: 50px;
+  width: 50px;
   cursor: pointer;
   z-index: 100;
 }
