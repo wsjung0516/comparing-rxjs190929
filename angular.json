@@ -130,6 +130,6 @@
   },
   "defaultProject": "comparing-rxjs",
   "cli": {
-    "defaultCollection": "@ngneat/spectator"
+    "defaultCollection": "@ngxs/schematics"
   }
 }

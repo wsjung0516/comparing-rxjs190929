@@ -16,6 +16,18 @@ import {ErrorsHandler} from './errors/errors-handler';
 import {ServerErrorsInterceptor} from './errors/errors-interceptor/server-errors.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ShortKeyComponent } from './short-key/short-key.component';
+import { HotkeysDialogComponent } from './short-key/hotkeys-dialog/hotkeys-dialog.component';
+import { HelloComponent } from './short-key/hello/hello.component';
+import {MatDialogModule} from '@angular/material';
+import {NgxsStoragePluginModule} from '@ngxs/storage-plugin';
+import {NgxsModule} from '@ngxs/store';
+import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {ShortKeyModule} from './short-key/short-key.module';
+import { PlayPauseComponent } from './play-pause/play-pause.component';
+import {AngularMaterialsModule} from '../shared/angular-materials/angular-materials.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -24,7 +36,12 @@ import { environment } from '../environments/environment';
     RxjsFuncComponent,
     CanvasComponent,
     PaintComponent,
-    CommTestComponent
+    CommTestComponent,
+    // ShortKeyComponent,
+    HotkeysDialogComponent,
+    // HelloComponent,
+    PlayPauseComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -32,8 +49,15 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxsModule.forRoot([]),
+    NgxsStoragePluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
     ErrorsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ShortKeyModule,
+    AngularMaterialsModule,
+    FlexLayoutModule
   ],
   providers: [
     {
@@ -46,6 +70,7 @@ import { environment } from '../environments/environment';
       multi: true
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HotkeysDialogComponent]
 })
 export class AppModule { }
