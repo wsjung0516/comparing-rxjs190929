@@ -28,6 +28,7 @@ import {ShortKeyModule} from './short-key/short-key.module';
 import { PlayPauseComponent } from './play-pause/play-pause.component';
 import {AngularMaterialsModule} from '../shared/angular-materials/angular-materials.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { FilterObjectComponent } from './filter-object/filter-object.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     HotkeysDialogComponent,
     // HelloComponent,
     PlayPauseComponent,
+    FilterObjectComponent,
 
   ],
   imports: [

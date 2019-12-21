@@ -7,6 +7,7 @@ import {PaintComponent} from './paint/paint.component';
 import {CommTestComponent} from './comm-test/comm-test.component';
 import {ShortKeyComponent} from './short-key/short-key.component';
 import {PlayPauseComponent} from './play-pause/play-pause.component';
+import {FilterObjectComponent} from './filter-object/filter-object.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'canvas', component: PaintComponent},
   { path: 'comm-test', component: CommTestComponent},
   { path: 'shortKeys', component: ShortKeyComponent},
-  { path: 'play-pause', component: PlayPauseComponent}
+  { path: 'play-pause', component: PlayPauseComponent},
+  { path: 'filter-object', component: FilterObjectComponent},
   ];
 
 @NgModule({
