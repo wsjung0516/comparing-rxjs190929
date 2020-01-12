@@ -8,6 +8,7 @@ import {CommTestComponent} from './comm-test/comm-test.component';
 import {ShortKeyComponent} from './short-key/short-key.component';
 import {PlayPauseComponent} from './play-pause/play-pause.component';
 import {FilterObjectComponent} from './filter-object/filter-object.component';
+import {UltimateSubjectComponent} from './ultimate-subject/ultimate-subject.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'shortKeys', component: ShortKeyComponent},
   { path: 'play-pause', component: PlayPauseComponent},
   { path: 'filter-object', component: FilterObjectComponent},
+  { path: 'ultimate-subject', component: UltimateSubjectComponent },
   ];
 
 @NgModule({

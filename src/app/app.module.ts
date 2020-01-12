@@ -29,6 +29,7 @@ import { PlayPauseComponent } from './play-pause/play-pause.component';
 import {AngularMaterialsModule} from '../shared/angular-materials/angular-materials.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { FilterObjectComponent } from './filter-object/filter-object.component';
+import { UltimateSubjectComponent } from './ultimate-subject/ultimate-subject.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FilterObjectComponent } from './filter-object/filter-object.component';
     // HelloComponent,
     PlayPauseComponent,
     FilterObjectComponent,
+    UltimateSubjectComponent,
 
   ],
   imports: [
