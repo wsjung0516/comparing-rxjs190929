@@ -30,6 +30,7 @@
     "@ngxs/storage-plugin": "^3.5.1",
     "@ngxs/store": "^3.3.2",
     "error-stack-parser": "^2.0.4",
+    "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "ngx-take-until-destroy": "^5.4.0",
     "ngx-toastr": "^11.1.0",

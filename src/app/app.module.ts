@@ -30,6 +30,7 @@ import {AngularMaterialsModule} from '../shared/angular-materials/angular-materi
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { FilterObjectComponent } from './filter-object/filter-object.component';
 import { UltimateSubjectComponent } from './ultimate-subject/ultimate-subject.component';
+import { SliderTestComponent } from './slider-test/slider-test.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UltimateSubjectComponent } from './ultimate-subject/ultimate-subject.co
     PlayPauseComponent,
     FilterObjectComponent,
     UltimateSubjectComponent,
+    SliderTestComponent,
 
   ],
   imports: [

@@ -9,6 +9,7 @@ import {ShortKeyComponent} from './short-key/short-key.component';
 import {PlayPauseComponent} from './play-pause/play-pause.component';
 import {FilterObjectComponent} from './filter-object/filter-object.component';
 import {UltimateSubjectComponent} from './ultimate-subject/ultimate-subject.component';
+import {SliderTestComponent} from './slider-test/slider-test.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'play-pause', component: PlayPauseComponent},
   { path: 'filter-object', component: FilterObjectComponent},
   { path: 'ultimate-subject', component: UltimateSubjectComponent },
+  { path: 'slider-test', component: SliderTestComponent },
   ];
 
 @NgModule({
