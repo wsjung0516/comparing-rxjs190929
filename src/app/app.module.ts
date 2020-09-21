@@ -34,7 +34,6 @@ import { SliderTestComponent } from './slider-test/slider-test.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { UploadProcessComponent } from './file-upload/upload-process/upload-process.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { ProgressComponent } from './file-upload/progress.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +52,6 @@ import { ProgressComponent } from './file-upload/progress.component';
     SliderTestComponent,
     FileUploadComponent,
     UploadProcessComponent,
-    ProgressComponent,
-
-
   ],
   imports: [
     BrowserModule,

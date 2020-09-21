@@ -9,7 +9,6 @@ import {NG_VALUE_ACCESSOR} from "@angular/forms";
       <span class="file-msg">{{file ? file.name : 'or drag and drop file here' }}</span>
       <input class="file-input" type="file">
     </div>
-    <app-progress [progress]="progress"></app-progress>
 
   `,
   styles: [`
