@@ -10,10 +10,12 @@ import {PlayPauseComponent} from './play-pause/play-pause.component';
 import {FilterObjectComponent} from './filter-object/filter-object.component';
 import {UltimateSubjectComponent} from './ultimate-subject/ultimate-subject.component';
 import {SliderTestComponent} from './slider-test/slider-test.component';
+import {FileUploadComponent} from "./file-upload/file-upload.component";
 
 
 const routes: Routes = [
-  { path: '', component: CommTestComponent, pathMatch: 'full'},
+  { path: '', component: FileUploadComponent, pathMatch: 'full'},
+//  { path: '', component: CommTestComponent, pathMatch: 'full'},
   { path: 'rxjs', component: RxjsFuncComponent},
   { path: 'vanilla', component: VanillaFuncComponent},
   { path: 'canvas', component: PaintComponent},
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'filter-object', component: FilterObjectComponent},
   { path: 'ultimate-subject', component: UltimateSubjectComponent },
   { path: 'slider-test', component: SliderTestComponent },
+  { path: 'file-upload', component: FileUploadComponent },
   ];
 
 @NgModule({

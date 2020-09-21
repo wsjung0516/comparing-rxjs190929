@@ -31,6 +31,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { FilterObjectComponent } from './filter-object/filter-object.component';
 import { UltimateSubjectComponent } from './ultimate-subject/ultimate-subject.component';
 import { SliderTestComponent } from './slider-test/slider-test.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { UploadProcessComponent } from './file-upload/upload-process/upload-process.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { ProgressComponent } from './file-upload/progress.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,10 @@ import { SliderTestComponent } from './slider-test/slider-test.component';
     FilterObjectComponent,
     UltimateSubjectComponent,
     SliderTestComponent,
+    FileUploadComponent,
+    UploadProcessComponent,
+    ProgressComponent,
+
 
   ],
   imports: [
@@ -60,10 +68,11 @@ import { SliderTestComponent } from './slider-test/slider-test.component';
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     ErrorsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     ShortKeyModule,
     AngularMaterialsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

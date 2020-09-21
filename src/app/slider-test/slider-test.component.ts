@@ -24,7 +24,7 @@ import {
             <mat-button-toggle ><i class="fa fa-home "></i></mat-button-toggle>
           </mat-button-toggle-group>
         </div>
-        <div>
+        <div id="button1">
           <mat-button-toggle style="position: relative;left: 5px" ><i class="fa fa-home "></i></mat-button-toggle>
         </div>
       </div>
@@ -57,12 +57,16 @@ import {
     padding: 0px;
     margin: 0px;
   }
+  .mat-button-toggle-checked {
+    background: red;
+  }
 
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderTestComponent implements OnInit, AfterViewInit, DoCheck {
   el:Element;
+  buttonEl: HTMLElement;
   // ruler: Element
   imageUrl = "assets/lucas/RULER-released.png";
   imageUrl2 = "assets/lucas/RULER-pressed0.png";
@@ -76,9 +80,16 @@ export class SliderTestComponent implements OnInit, AfterViewInit, DoCheck {
   constructor( @Host() private ngZone: NgZone) { }
 
   ngOnInit() {
-
+    this.buttonEl = document.getElementById('button1');
     this.el = document.getElementById('dummy_tag');
-
+    setTimeout(()=>{
+      this.buttonEl.click()
+      console.log('focused')
+    },3000)
+    setTimeout(()=>{
+      this.buttonEl.blur()
+      console.log('blued')
+    },6000)
 
   }
   ngDoCheck(): void {

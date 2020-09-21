@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<script>
+  function log(msg) {
+    console.log(`%c${msg}`, `color: #2196F3; font-weight: 600;`);
+  }
+  function noop() {}
+</script>
+<body></body>
+
+<script>
+  import {ConnectableObservable, multicast, ReplaySubject} from "rxjs";
+
+  class Observable {
+    constructor(subscriptionFn) {
+      this.subscriptionFn = subscriptionFn;
+    }
+
+    subscribe(observer) {
+      return this.subscriptionFn(observer);
+    }
+
+    pipe(...operators) {
+      return operators.reduce((source, next) => next(source), this);
+    }
+  }
+
+  class Subject extends Observable {
+    constructor() {
+      super();
+      this.observers = [];
+    }
+
+    subscribe(observer) {
+      this.observers.push(observer);
+    }
+
+    next(value) {
+      this.observers.forEach(observer => observer.next(value));
+    }
+
+    error(error) {
+      this.observers.forEach(observer => observer.error(error));
+    }
+
+    complete() {
+      this.observers.forEach(observer => observer.complete());
+    }
+  }
+
+  function http(url) {
+    return new Observable(observer => {
+      log('Observable execution: http -3');
+      const xhr = new XMLHttpRequest();
+      xhr.addEventListener('load', function(e) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          observer.next(JSON.parse(xhr.responseText));
+        }
+      });
+      xhr.open('GET', url);
+      xhr.send();
+    });
+  }
+
+  function map(fn) {
+    return source => {
+      return new Observable(observer => {
+        log('Observable execution: map -2');
+        return source.subscribe({
+          next(value) {
+            observer.next(fn(value));
+          }
+        });
+      });
+    };
+  }
+  function map2(fn) {
+    return source => {
+      return new Observable(observer => {
+        log('Observable execution: map -1');
+        return source.subscribe({
+          next(value) {
+            observer.next(fn(value));
+          }
+        });
+      });
+    };
+  }
+
+  const observer = tag => ({
+    next(value) {
+      console.log(`${tag}:`, value);
+    }
+  });
+  const subject = new Subject();
+  subject.subscribe(observer('subscriber1'));
+  subject.subscribe(observer('subscriber2'));
+
+  http('https://jsonplaceholder.typicode.com/users')
+    .pipe(
+      map(res => res[0]),
+      map2(res => res[0]),
+    )
+    .subscribe(subject);
+  /******************************************************/
+
+  const connectableObservable = interval(1000).pipe(
+    multicast(new ReplaySubject(1))
+  )
+
+  const observer1 = connectableObservable.subscribe(observer('connectableObservable -1'));
+
+  setTimeout(() => {
+    // Late subscriber
+    connectableObservable.subscribe(observer('connectableObservable -2'));
+  }, 3000)
+
+  const connectable = (connectableObservable as ConnectableObservable<any>).connect();
+/*
+  function of(...values) {
+    return new Observable(observer => {
+      log('Observable execution: of');
+      values.forEach(value => observer.next(value));
+    });
+  }
+
+  class ReplaySubject extends Subject {
+    constructor(bufferSize) {
+      super();
+      this.observers = [];
+      this.bufferSize = bufferSize;
+      this.buffer = [];
+    }
+
+    subscribe(observer) {
+      this.buffer.forEach(val => observer.next(val));
+      this.observers.push(observer);
+    }
+
+    next(value) {
+      if (this.buffer.length === this.bufferSize) {
+        this.buffer.shift();
+      }
+
+      this.buffer.push(value);
+      this.observers.forEach(observer => observer.next(value));
+    }
+  }
+
+  const subject = new ReplaySubject(3);
+  of(1, 2, 3).subscribe(subject);
+
+  subject.subscribe(observer('subscriber1'));
+  subject.subscribe(observer('subscriber2'));
+
+
+*/
+
+  // BehaviorSubject
+  // class BehaviorSubject extends Subject {
+  //   constructor(initialValue) {
+  //     super();
+  //     this.observers = [];
+
+  //     if (typeof initialValue === 'undefined') {
+  //       throw new Error('You need to provide initial value');
+  //     }
+
+  //     this.lastValue = initialValue;
+  //   }
+
+  //   subscribe(observer) {
+  //     this.observers.push(observer);
+  //     observer.next(this.lastValue);
+  //   }
+
+  //   next(value) {
+  //     this.lastValue = value;
+  //     this.observers.forEach(observer => observer.next(value));
+  //   }
+
+  //   getValue() {
+  //     return this.lastValue;
+  //   }
+  // }
+</script>
+</html>
