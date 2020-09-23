@@ -34,6 +34,9 @@ import { SliderTestComponent } from './slider-test/slider-test.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { UploadProcessComponent } from './file-upload/upload-process/upload-process.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ColumnResizeComponent } from './column-resize/column-resize.component';
+import { ResizableComponent } from './column-resize/resizable/resizable.component';
+import { ResizableDirective } from './column-resize/resizable.directive';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     SliderTestComponent,
     FileUploadComponent,
     UploadProcessComponent,
+    ColumnResizeComponent,
+    ResizableComponent,
+    ResizableDirective,
   ],
   imports: [
     BrowserModule,

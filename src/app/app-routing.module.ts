@@ -11,10 +11,11 @@ import {FilterObjectComponent} from './filter-object/filter-object.component';
 import {UltimateSubjectComponent} from './ultimate-subject/ultimate-subject.component';
 import {SliderTestComponent} from './slider-test/slider-test.component';
 import {FileUploadComponent} from "./file-upload/file-upload.component";
+import {ColumnResizeComponent} from "./column-resize/column-resize.component";
 
 
 const routes: Routes = [
-  { path: '', component: FileUploadComponent, pathMatch: 'full'},
+  { path: '', component: ColumnResizeComponent, pathMatch: 'full'},
 //  { path: '', component: CommTestComponent, pathMatch: 'full'},
   { path: 'rxjs', component: RxjsFuncComponent},
   { path: 'vanilla', component: VanillaFuncComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'ultimate-subject', component: UltimateSubjectComponent },
   { path: 'slider-test', component: SliderTestComponent },
   { path: 'file-upload', component: FileUploadComponent },
+  { path: 'column-resizable', component: ColumnResizeComponent },
   ];
 
 @NgModule({
